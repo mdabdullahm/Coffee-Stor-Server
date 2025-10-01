@@ -50,13 +50,11 @@ async function run() {
       res.send(result);
     });
 
-    // ===============================================================
-    //               ✅ সমাধান: PUT রুটটি এখানে যোগ করতে হবে
-    // ===============================================================
+    
     app.put('/coffee/:id', async(req, res) => {
         const id = req.params.id;
         const filter = { _id: new ObjectId(id) };
-        const options = { upsert: true }; // যদি কফিটি খুঁজে না পায়, তাহলে নতুন করে তৈরি করবে
+        const options = { upsert: true }; 
         const updatedCoffeeData = req.body;
         
         const coffee = {
@@ -74,7 +72,7 @@ async function run() {
         const result = await coffeeCollection.updateOne(filter, coffee, options);
         res.send(result);
     });
-    // ===============================================================
+    // ===========================================================
 
     // DELETE a coffee
     app.delete('/coffee/:id', async(req, res) =>{
